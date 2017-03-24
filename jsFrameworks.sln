@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetCoreReact", "dotnet-core-react\DotnetCoreReact.csproj", "{21EE623F-08CA-4320-8F87-53141B0C6E54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular", "dotnet-core-angular2\Angular.csproj", "{F5EA90B5-162E-43F1-8381-237C55FF9640}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular", "dot-net-core-angular2\Angular.csproj", "{45F20C6B-7D74-489A-A56D-D2D800DF0A8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetCoreReact", "dotnet-core-react\DotnetCoreReact.csproj", "{07A23F03-5664-48E7-85C1-403E3A516D77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{21EE623F-08CA-4320-8F87-53141B0C6E54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21EE623F-08CA-4320-8F87-53141B0C6E54}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21EE623F-08CA-4320-8F87-53141B0C6E54}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21EE623F-08CA-4320-8F87-53141B0C6E54}.Release|Any CPU.Build.0 = Release|Any CPU
-		{45F20C6B-7D74-489A-A56D-D2D800DF0A8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45F20C6B-7D74-489A-A56D-D2D800DF0A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45F20C6B-7D74-489A-A56D-D2D800DF0A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{45F20C6B-7D74-489A-A56D-D2D800DF0A8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5EA90B5-162E-43F1-8381-237C55FF9640}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5EA90B5-162E-43F1-8381-237C55FF9640}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5EA90B5-162E-43F1-8381-237C55FF9640}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5EA90B5-162E-43F1-8381-237C55FF9640}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07A23F03-5664-48E7-85C1-403E3A516D77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07A23F03-5664-48E7-85C1-403E3A516D77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07A23F03-5664-48E7-85C1-403E3A516D77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07A23F03-5664-48E7-85C1-403E3A516D77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
