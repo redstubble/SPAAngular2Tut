@@ -1,19 +1,17 @@
 import * as React from 'react';
 
-interface NewProps {
-    value?: [number]
 
-}
 interface MyProps {
-
+    value?: number
 }
+
 interface MyState { }
 
-class Square extends React.Component<NewProps, MyState> {
+class Square extends React.Component<MyProps, MyState> {
     render() {
         return (
             <button className="square">
-                {this.props}
+                {this.props.value}
             </button>
         );
     }
