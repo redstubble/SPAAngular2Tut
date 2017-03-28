@@ -27,6 +27,14 @@ export class App {
             moduleId: '../fetchdata/fetchdata',
             nav: true,
             title: 'Fetch data'
+        },
+        {
+            route: 'tutorial',
+            name: 'tutorial',
+            settings: { icon: 'th-list' },
+            moduleId: '../tutorial/tutorial',
+            nav: true,
+            title: 'Tutorial'
         }]);
 
         this.router = router;
