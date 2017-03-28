@@ -7,6 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular", "dotnet-core-angu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetCoreReact", "dotnet-core-react\DotnetCoreReact.csproj", "{07A23F03-5664-48E7-85C1-403E3A516D77}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetCoreVue", "dotnet-core-vue\DotnetCoreVue.csproj", "{88E2A8D5-7C48-4DC2-BA1B-7DB66C1F6DB0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetCoreAurelia", "dotnet-core-aurelia\DotnetCoreAurelia.csproj", "{4E905010-8BC2-4460-B4D4-3E1BA647461C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotnetCoreReactRedux", "dotnet-core-react-redux\DotnetCoreReactRedux.csproj", "{D5FE4B2F-30D0-4867-9D3F-DDB1F8F6435D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{07A23F03-5664-48E7-85C1-403E3A516D77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07A23F03-5664-48E7-85C1-403E3A516D77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07A23F03-5664-48E7-85C1-403E3A516D77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88E2A8D5-7C48-4DC2-BA1B-7DB66C1F6DB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88E2A8D5-7C48-4DC2-BA1B-7DB66C1F6DB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88E2A8D5-7C48-4DC2-BA1B-7DB66C1F6DB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88E2A8D5-7C48-4DC2-BA1B-7DB66C1F6DB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E905010-8BC2-4460-B4D4-3E1BA647461C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E905010-8BC2-4460-B4D4-3E1BA647461C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E905010-8BC2-4460-B4D4-3E1BA647461C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E905010-8BC2-4460-B4D4-3E1BA647461C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5FE4B2F-30D0-4867-9D3F-DDB1F8F6435D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5FE4B2F-30D0-4867-9D3F-DDB1F8F6435D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5FE4B2F-30D0-4867-9D3F-DDB1F8F6435D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5FE4B2F-30D0-4867-9D3F-DDB1F8F6435D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
