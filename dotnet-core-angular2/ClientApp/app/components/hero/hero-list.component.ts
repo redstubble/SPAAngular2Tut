@@ -7,10 +7,9 @@ import { OnInit } from '@angular/core';
 
 
 @Component({
-    selector: 'heroes',
+    selector: 'my-heroes',
     templateUrl: './hero-list.component.html',
     styleUrls: ['./hero-list.component.css'],
-    providers: [HeroService]
 })
 
 export class HeroListComponent {

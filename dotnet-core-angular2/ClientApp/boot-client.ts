@@ -5,7 +5,7 @@ import { AppModule } from './app/app.module';
 import 'bootstrap';
 const rootElemTagName = 'app'; // Update this if you change your root component selector
 
-// Enable either Hot Module Reloading or production mode
+// Enable either Webpack Hot Module Reloading or production mode
 if (module['hot']) {
     module['hot'].accept();
     module['hot'].dispose(() => {
