@@ -5,6 +5,14 @@
     "test": "karma start ClientApp/test/karma.conf.js"
   },
   "dependencies": {
+    "Microsoft.VisualStudio.Web.CodeGeneration.Tools": {
+      "version": "1.1.0-preview4-final",
+      "type": "build"
+    },
+    "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
+      "type": "build",
+      "version": "1.1.0-preview4-final"
+    },
     "@angular/common": "^2.4.5",
     "@angular/compiler": "^2.4.5",
     "@angular/core": "^2.4.5",
