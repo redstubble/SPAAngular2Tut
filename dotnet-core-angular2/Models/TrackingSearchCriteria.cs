@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Angular.Models
 {
+
     public class TrackingSearchCriteria
     {
         [Display(Name = "Reader Organization")]
