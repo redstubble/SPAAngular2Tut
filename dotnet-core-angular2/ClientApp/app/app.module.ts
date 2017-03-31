@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { UniversalModule } from 'angular2-universal';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './components/app/app.component'
@@ -12,7 +12,11 @@ import { HeroDetailComponent } from './components/hero/hero-detail.component';
 import { HeroListComponent } from './components/hero/hero-list.component';
 import { HeroService } from './components/hero/hero.service';
 import { HeroDashboardComponent } from './components/hero/hero-dashboard.component';
-import { HeroMainComponent } from './components/hero/hero-main.component'
+import { HeroMainComponent } from './components/hero/hero-main.component';
+import { HeroFormComponent } from './components/form/hero-form.component';
+import { HeroFormReactiveComponent } from './components/form-reactive/form-reactive.component';
+import { HeroFormReactiveMainComponent } from './components/form-reactive/form-main.component';
+
 
 import { AppRoutingModule } from './app.routes'
 
@@ -28,13 +32,17 @@ import { AppRoutingModule } from './app.routes'
         HeroDetailComponent,
         HeroListComponent,
         HeroDashboardComponent,
-        HeroMainComponent
+        HeroMainComponent,
+        HeroFormComponent,
+        HeroFormReactiveComponent,
+        HeroFormReactiveMainComponent
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
         HttpModule,
         FormsModule,
         AppRoutingModule,
+        ReactiveFormsModule
         //RouterModule.forRoot([
         //    { path: '', redirectTo: 'home', pathMatch: 'full' },
         //    { path: 'home', component: HomeComponent },

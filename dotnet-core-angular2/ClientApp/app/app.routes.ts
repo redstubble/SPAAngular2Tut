@@ -7,8 +7,10 @@ import { CounterComponent } from './components/counter/counter.component';
 import { HeroDetailComponent } from './components/hero/hero-detail.component';
 import { HeroListComponent } from './components/hero/hero-list.component';
 import { HeroDashboardComponent } from './components/hero/hero-dashboard.component';
-import { HeroMainComponent } from './components/hero/hero-main.component'
-
+import { HeroMainComponent } from './components/hero/hero-main.component';
+import { HeroFormComponent } from './components/form/hero-form.component';
+import { HeroFormReactiveMainComponent } from './components/form-reactive/form-main.component';
+    
 
 export const routes: Routes = [
     { path: '', redirectTo: 'hero/dashboard', pathMatch: 'full' },
@@ -24,6 +26,9 @@ export const routes: Routes = [
             { path: 'detail/:id', component: HeroDetailComponent },
         ]
     },
+    { path: 'form', component: HeroFormComponent },
+    { path: 'form-reactive', component: HeroFormReactiveMainComponent },
+
     { path: '**', redirectTo: 'home' }
 ]
 
