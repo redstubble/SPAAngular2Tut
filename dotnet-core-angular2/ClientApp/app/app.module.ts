@@ -16,6 +16,10 @@ import { HeroMainComponent } from './components/hero/hero-main.component';
 import { HeroFormComponent } from './components/form/hero-form.component';
 import { HeroFormReactiveComponent } from './components/form-reactive/form-reactive.component';
 import { HeroFormReactiveMainComponent } from './components/form-reactive/form-main.component';
+import { ReactiveListComponent } from './components/form-reactive/hero-list.component';
+
+import { DataService } from './components/form-reactive/data.service';
+
 
 
 import { AppRoutingModule } from './app.routes'
@@ -35,7 +39,8 @@ import { AppRoutingModule } from './app.routes'
         HeroMainComponent,
         HeroFormComponent,
         HeroFormReactiveComponent,
-        HeroFormReactiveMainComponent
+        HeroFormReactiveMainComponent,
+        ReactiveListComponent
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
@@ -52,7 +57,7 @@ import { AppRoutingModule } from './app.routes'
         //    { path: '**', redirectTo: 'home' },
         //]),
     ],
-    providers: [HeroService]
+    providers: [HeroService, DataService]
 })
 
 

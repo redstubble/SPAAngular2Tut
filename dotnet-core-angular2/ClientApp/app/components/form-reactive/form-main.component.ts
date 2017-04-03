@@ -5,7 +5,7 @@
     template: `
   <div class="container">
     <h1>Reactive Forms</h1>
-    <hero-form></hero-form>
+    <hero-list></hero-list>
   </div>`
 })
 export class HeroFormReactiveMainComponent { }
