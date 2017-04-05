@@ -20,6 +20,21 @@ export class HeroFormReactiveComponent implements OnChanges {
         this.logNameChange();
     }
 
+    createForm() {
+        this.heroForm = this.fb.group({
+            name: ['', Validators.required], // <--- the FormControl called "name"
+            secretLairs: this.fb.array([]),
+            //address: this.fb.group({ // <-- the child FormGroup
+            //    street: '',
+            //    city: '',
+            //    state: '',
+            //    zip: ''
+            //}),
+            power: '',
+            sidekick: ''
+        });
+    }
+
     ngOnChanges() {
         this.heroForm.reset({
             name: this.hero.name,
@@ -51,20 +66,7 @@ export class HeroFormReactiveComponent implements OnChanges {
         );
     }
 
-    createForm() {
-        this.heroForm = this.fb.group({
-            name: ['', Validators.required], // <--- the FormControl called "name"
-            secretLairs: this.fb.array([]),
-            //address: this.fb.group({ // <-- the child FormGroup
-            //    street: '',
-            //    city: '',
-            //    state: '',
-            //    zip: ''
-            //}),
-            power: '',
-            sidekick: ''
-        });
-    }
+
 
     prepareSaveHero(): Hero {
         const formModel = this.heroForm.value;

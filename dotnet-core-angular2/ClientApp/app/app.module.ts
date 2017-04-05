@@ -14,19 +14,24 @@ import { HeroService } from './components/hero/hero.service';
 import { HeroDashboardComponent } from './components/hero/hero-dashboard.component';
 import { HeroMainComponent } from './components/hero/hero-main.component';
 import { HeroFormComponent } from './components/form/hero-form.component';
-import { HeroFormReactiveComponent } from './components/form-reactive/form-reactive.component';
-import { HeroFormReactiveMainComponent } from './components/form-reactive/form-main.component';
-import { ReactiveListComponent } from './components/form-reactive/hero-list.component';
 
-import { DataService } from './components/form-reactive/data.service';
+import { ReactiveFormModule } from './components/form-reactive/form-reactive.module';
 
-
+import { CoreModule } from './components/core/core.module';
 
 import { AppRoutingModule } from './app.routes'
 
-
 @NgModule({
-    bootstrap: [ AppComponent ],
+    bootstrap: [AppComponent],
+    imports: [
+        UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
+        HttpModule,
+        FormsModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        CoreModule,
+        ReactiveFormModule
+    ],
     declarations: [
         AppComponent,
         NavMenuComponent,
@@ -38,30 +43,8 @@ import { AppRoutingModule } from './app.routes'
         HeroDashboardComponent,
         HeroMainComponent,
         HeroFormComponent,
-        HeroFormReactiveComponent,
-        HeroFormReactiveMainComponent,
-        ReactiveListComponent
     ],
-    imports: [
-        UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
-        HttpModule,
-        FormsModule,
-        AppRoutingModule,
-        ReactiveFormsModule
-        //RouterModule.forRoot([
-        //    { path: '', redirectTo: 'home', pathMatch: 'full' },
-        //    { path: 'home', component: HomeComponent },
-        //    { path: 'counter', component: CounterComponent },
-        //    { path: 'fetch-data', component: FetchDataComponent },
-        //    { path: 'hero', component: HeroDashboardComponent },
-        //    { path: '**', redirectTo: 'home' },
-        //]),
-    ],
-    providers: [HeroService, DataService]
+    providers: [HeroService]
 })
 
-
-
-export class AppModule {
-
-}
+export class AppModule {}
