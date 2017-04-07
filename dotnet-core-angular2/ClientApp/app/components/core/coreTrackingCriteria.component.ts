@@ -1,36 +1,72 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnInit, EventEmitter, Input} from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CoreDataService } from './core.service'
+import { Http } from '@angular/http';
+
+interface DropDownLis {
+    value: number;
+    text: string;
+}
 
 @Component({
     selector: 'core-criteria',
     templateUrl: './coreTrackingCriteria.component.html',
     styleUrls: ['./coreTrackingCriteria.component.css']
 })
-export class CoreTrackingCriteriaComponent {
-
-    constructor(private fb: FormBuilder) {
-        this.createForm();
+export class CoreTrackingCriteriaComponent implements OnInit {
+    @Input('DDLType') DDLType: string;
+    public color: string = 'blue';
+    public trackingForm: FormGroup;
+    public readerOrgs: DropDownLis[];
+    
+    constructor(private http: Http, private fb: FormBuilder, private coreService: CoreDataService) {
+        this.http.get('/api/Tracking/GetReaderOrgs').subscribe(
+            result => { this.readerOrgs = result.json() as DropDownLis[]; },
+            error => { this.handleError },
+            () => { this.readerOrgs.push({value: 0, text: 'All'}) }
+            )
     }
 
-    color: string = 'blue';
+    ngOnInit() {
+        //var t = this.coreService.readerOrgs;
 
-    trackingForm: FormGroup;
+        this.createForm();
+        //this.readerOrgs = this.coreService.getReaderOrgs();
+        ////const selectedOrg = this.readerOrgs.find(a => a.value === this.readerOrgResponse.readerOrg.value)
+        //this.readerOrgResponse.readerOrg.value = selectedOrg;
+        //(<FormGroup>this.trackingForm).setValue(this.readerOrgResponse, { onlySelf: true });
+    }
 
-    createForm() {
+    private handleError(error: any): Promise<any> {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+    }
+
+    public createForm() {
         this.trackingForm = this.fb.group({
-            readerOrg: ['', Validators.required],
+            readerOrg: [],
             location: ['', Validators.required],
-            //name: ['', Validators.required], // <--- the FormControl called "name"
-            //secretLairs: this.fb.array([]),
-            ////address: this.fb.group({ // <-- the child FormGroup
-            ////    street: '',
-            ////    city: '',
-            ////    state: '',
-            ////    zip: ''
-            ////}),
-            //power: '',
-            //sidekick: ''
+            subLocation: ['', Validators.required],
+            tagID: ['', Validators.required],
+            equipNo: ['', Validators.required],
+            equipCat: ['', Validators.required],
+            equipType: ['', Validators.required],
+            fromDate: ['', Validators.required],
+            toDate: ['', Validators.required]
         });
+    };
+
+    public search() {
+        //this.secretLairs.push(this.fb.group(new Address()));
+    }
+
+    public clear() {
+        //this.secretLairs.push(this.fb.group(new Address()));
+    }
+
+    public export() {
+        //this.secretLairs.push(this.fb.group(new Address()));
     }
 
 }
+

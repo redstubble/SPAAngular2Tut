@@ -19,6 +19,9 @@ import { ReactiveFormModule } from './components/form-reactive/form-reactive.mod
 
 import { CoreModule } from './components/core/core.module';
 
+
+
+
 import { AppRoutingModule } from './app.routes'
 
 @NgModule({
@@ -30,7 +33,8 @@ import { AppRoutingModule } from './app.routes'
         AppRoutingModule,
         ReactiveFormsModule,
         CoreModule,
-        ReactiveFormModule
+        ReactiveFormModule,
+
     ],
     declarations: [
         AppComponent,
