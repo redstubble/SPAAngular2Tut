@@ -22,20 +22,12 @@ import { CoreModule } from './components/core/core.module';
 
 
 
+
 import { AppRoutingModule } from './app.routes'
 
 @NgModule({
     bootstrap: [AppComponent],
-    imports: [
-        UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
-        HttpModule,
-        FormsModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        CoreModule,
-        ReactiveFormModule,
 
-    ],
     declarations: [
         AppComponent,
         NavMenuComponent,
@@ -48,7 +40,16 @@ import { AppRoutingModule } from './app.routes'
         HeroMainComponent,
         HeroFormComponent,
     ],
-    providers: [HeroService]
+    providers: [HeroService],
+    imports: [
+        HttpModule,
+        FormsModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        CoreModule,
+        ReactiveFormModule,
+        UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
+    ],
 })
 
 export class AppModule {}

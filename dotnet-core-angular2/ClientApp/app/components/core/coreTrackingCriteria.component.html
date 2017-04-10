@@ -6,10 +6,7 @@
             <div class="col-md-6">
                 <label [myLabel] [myHighlight]="color" class="control-label col-xs-4">Reader Organization</label>
                 <div class="col-xs-8">
-                    <select formControlName="readerOrg" >
-                        <option *ngFor="let readerOrg of readerOrgs; #i=index" [attr.selected]="i===0" [ngValue]="readerOrg">{{readerOrg.text}}</option>
-                    </select>
-                    <!--<input class="form-control" formControlName="readerOrg">-->
+                    <dropDownList formControlName="readerOrg" selectType="All" url="/api/Tracking/GetReaderOrgs" ></dropDownList>
                 </div>
             </div>
             <div class="col-md-6">
@@ -66,6 +63,8 @@
     </form>
 </div>
 
+<p *ngIf="!trackingForm.valid">Counter is invalid!</p>
+<pre>{{ trackingForm.value | json }}</pre>
 
 <button class='btn bg-primary' (click)="search()" type="button">Search</button>
 <button class='btn bg-primary' (click)="clear()" type="button">Clear</button>

@@ -6,9 +6,9 @@ import 'rxjs/add/operator/toPromise';
 
 
 export class CoreDataService {
-    private getReaderOrgsUrl = '/api/Tracking/GetReaderOrgs';
+    //private getReaderOrgsUrl = '/api/Tracking/GetReaderOrgs';
 
-    public readerOrgs: DropDownList[];
+    //public readerOrgs: DropDownList[];
 
     constructor(private http: Http) {
         //http.get('/api/Tracking/GetReaderOrgs').subscribe(result => {
@@ -16,14 +16,16 @@ export class CoreDataService {
         //});
     };
 
-    public getReaderOrgs(): Promise<DropDownList[]> {
-        return this.http.get(this.getReaderOrgsUrl)
-            .toPromise()
-            .then(response => response.json().data as DropDownList[])
-            .catch(this.handleError);
-    }
+    //public getReaderOrgs(): Promise<DropDownList[]> {
+    //    return this.http.get(this.getReaderOrgsUrl)
+    //        .toPromise()
+    //        .then(response => response.json().data as DropDownList[])
+    //        .catch(this.handleError);
+    //}
 
-    private handleError(error: any): Promise<any> {
+
+
+    public handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     }

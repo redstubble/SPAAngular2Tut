@@ -1,4 +1,6 @@
-﻿import { Component, OnInit, forwardRef, Input, OnChanges } from '@angular/core';
+﻿//https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html
+
+import { Component, OnInit, forwardRef, Input, OnChanges } from '@angular/core';
 import { FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR, NG_VALIDATORS } from '@angular/forms';
 
 ////https://toddmotto.com/passing-data-angular-2-components-input

@@ -14,9 +14,9 @@ namespace WebApplicationBasic.Controllers
         [HttpGet("[action]")]
         public IEnumerable<DropDownList> GetReaderOrgs()
         {
-            var orgs = new string[] { "Any", "Air NZ", "Alaska", "Core", "NZ Post", "Delta" };
+            var orgs = new string[] {"Air NZ", "Alaska", "Core", "NZ Post", "Delta" };
 
-            return Enumerable.Range(0, 4).Select(index => new DropDownList {
+            return Enumerable.Range(1, 4).Select(index => new DropDownList {
                 Value = index,
                 Text = orgs[index]
              });
