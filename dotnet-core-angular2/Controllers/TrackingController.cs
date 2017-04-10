@@ -7,10 +7,13 @@ using Angular.Models;
 
 namespace WebApplicationBasic.Controllers
 {
+    // TO DO Query database to get full result set
 
     [Route("api/[controller]")]
     public class TrackingController : Controller
     {
+        public String[] Orgs { get; set; }
+
         [HttpGet("[action]")]
         public IEnumerable<DropDownList> GetReaderOrgs()
         {
@@ -21,45 +24,24 @@ namespace WebApplicationBasic.Controllers
                 Text = orgs[index]
              });
         }
-    
-        public String[] Orgs { get; set; }
 
-        public class DropDownList
+        [HttpGet("[action]")]
+        public IEnumerable<DropDownList> GetSubLocations()
         {
-            public string Text { get; set; }
-            public int Value{ get; set; }
+            var orgs = new string[] { "Alpha Delivery", "Avion", "Bag Room", "Cargo", "Checkpoint" };
+
+            return Enumerable.Range(1, 4).Select(index => new DropDownList
+            {
+                Value = index,
+                Text = orgs[index]
+            });
         }
 
-        //private static string[] Summaries = new[]
-        //{
-        //    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        //};
+    }
 
-        //[HttpGet("[action]")]
-        //public IEnumerable<WeatherForecast> WeatherForecasts()
-        //{
-        //    var rng = new Random();
-        //    return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        //    {
-        //        DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
-        //        TemperatureC = rng.Next(-20, 55),
-        //        Summary = Summaries[rng.Next(Summaries.Length)]
-        //    });
-        //}
-
-        //public class WeatherForecast
-        //{
-        //    public string DateFormatted { get; set; }
-        //    public int TemperatureC { get; set; }
-        //    public string Summary { get; set; }
-
-        //    public int TemperatureF
-        //    {
-        //        get
-        //        {
-        //            return 32 + (int)(TemperatureC / 0.5556);
-        //        }
-        //    }
-        //}
+    public class DropDownList
+    {
+        public string Text { get; set; }
+        public int Value { get; set; }
     }
 }

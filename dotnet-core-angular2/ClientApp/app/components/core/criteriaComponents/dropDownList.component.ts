@@ -5,8 +5,8 @@ import { CoreDataService } from '../core.service'
 import { Http } from '@angular/http';
 
 interface DropDownList {
-    value: number;
     text: string;
+    value: any;
 }
 
 @Component({
@@ -25,6 +25,7 @@ export class DropDownListComponent implements ControlValueAccessor, OnInit  {
 
     @Input() selectType;
     @Input() url;
+    
 
     public listOptions: { [id: string]: DropDownList } = {
         'All': {
@@ -37,6 +38,8 @@ export class DropDownListComponent implements ControlValueAccessor, OnInit  {
         },
     };
 
+    public useIndex: Boolean = false;
+
     public items: DropDownList[];
 
     public item: DropDownList;
@@ -45,6 +48,7 @@ export class DropDownListComponent implements ControlValueAccessor, OnInit  {
 
     pushDefaultItem = function () {
         let item = this.listOptions[this.selectType];
+        this.useIndex = (typeof this.items[0].value === "number") ? true : false;
         this.selectedItem = item;
         this.items.unshift(item)
     }

@@ -10,7 +10,7 @@ import { Http } from '@angular/http';
     styleUrls: ['./coreTrackingCriteria.component.css']
 })
 export class CoreTrackingCriteriaComponent implements OnInit {
-    public color: string = 'blue';
+
     public trackingForm: FormGroup;
     
     constructor(private http: Http, private fb: FormBuilder, private coreService: CoreDataService) {
