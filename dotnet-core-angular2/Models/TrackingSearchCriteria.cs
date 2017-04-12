@@ -15,8 +15,8 @@ namespace Angular.Models
         [StringLength(3)]
         public String Location { get; set; }
 
-        [Display(Name = "Sub Location")]
         public String SubLocation { get; set; }
+        public String subLocation { get; set; }
 
         [Display(Name = "Tag ID")]
         [Range(1, Int32.MaxValue, ErrorMessage = "Tag ID is invalid")]

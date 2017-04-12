@@ -1,7 +1,12 @@
-﻿.criteria-container {
+﻿.search-criteria {
     background-color: #F0F8FF;
     border: solid #000000 1px;
-    padding: 15px 0
+    padding: 15px 0;
+    display: block;
+}
+.form-group {
+    display: inline-block;
+    width: 100%;
 }
 
 .btn {

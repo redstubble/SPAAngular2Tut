@@ -1,7 +1,8 @@
-﻿import { Component, OnChanges, forwardRef, Input, OnInit } from '@angular/core';
+﻿//https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html
+
+import { Component, OnChanges, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CoreDataService } from '../core.service'
-
 import { Http } from '@angular/http';
 
 interface DropDownList {
@@ -53,9 +54,7 @@ export class DropDownListComponent implements ControlValueAccessor, OnInit  {
         this.items.unshift(item)
     }
 
-    constructor(private http: Http
-        //, private coreService: CoreDataService
-    ) {
+    constructor(private http: Http) {
         
     };
 

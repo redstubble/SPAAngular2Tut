@@ -1,121 +1,79 @@
 ﻿<h2>Core Tracking Criteria</h2>
 
 <div class="criteria-container col-xs-12">
-    <form [formGroup]="trackingForm" novalidate>
-        <div class="form-group">
-            <div class="col-md-6">
-                <label [myLabel] [myHighlight]="color" class="control-label col-xs-4">Reader Organization</label>
-                <div class="col-xs-8">
-                    <dropDownList formControlName="readerOrg" selectType="All" url="/api/Tracking/GetReaderOrgs" ></dropDownList>
+    <form [formGroup]="trackingForm" (ngSubmit)="onSubmit(trackingForm, $event)" novalidate>
+        <div class="search-criteria">
+            <div class="form-group">
+                <div class="col-md-6">
+                    <label [myLabel] [myHighlight]="color" class="control-label col-xs-4">Reader Organization</label>
+                    <div class="col-xs-8">
+                        <dropDownList formControlName="readerOrg" selectType="All" url="/api/Tracking/GetReaderOrgs"></dropDownList>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label [myLabel] class="control-label col-xs-4">Location</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" formControlName="location">
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <label [myLabel] class="control-label col-xs-4">Location</label>
-                <div class="col-xs-8">
-                    <input class="form-control" formControlName="location">
+            <div class="form-group">
+                <div class="col-md-6">
+                    <label [myLabel] class="control-label col-xs-4">Sub Location</label>
+                    <div class="col-xs-8">
+                        <dropDownList formControlName="subLocation" selectType="All" url="/api/Tracking/GetSubLocations"></dropDownList>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label [myLabel] class="control-label col-xs-4">Tag ID</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" formControlName="tagID">
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <label [myLabel] class="control-label col-xs-4">Sub Location</label>
-                <div class="col-xs-8">
-                    <input class="form-control" formControlName="subLocation">
+            <div class="form-group">
+                <div class="col-md-6">
+                    <label [myLabel] class="control-label col-xs-4">Equipment No</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" formControlName="equipNo">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label [myLabel] class="control-label col-xs-4">Equipment Category</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" formControlName="equipCat">
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <label [myLabel] class="control-label col-xs-4">Tag ID</label>
-                <div class="col-xs-8">
-                    <input class="form-control" formControlName="tagID">
+            <div class="form-group">
+                <div class="col-md-6">
+                    <label [myLabel] class="control-label col-xs-4">Equipment Type</label>
+                    <div class="col-xs-8">
+                        <input class="form-control" formControlName="equipType">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label [myLabel] class="control-label col-xs-4">From</label>
+                    <div class="col-xs-8">
+                        <material-datepicker (onSelect)="onSelectFromDate($event)" dateFormat="YYYY-MM-DD" [(date)]="fromDate"></material-datepicker>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label [myLabel] class="control-label col-xs-4">To</label>
+                    <div class="col-xs-8">
+                        <material-datepicker (onSelect)="onSelectToDate($event)" dateFormat="YYYY-MM-DD" [(date)]="toDate"></material-datepicker>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <label [myLabel] class="control-label col-xs-4">Equipment No</label>
-                <div class="col-xs-8">
-                    <input class="form-control" formControlName="equipNo">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <label [myLabel] class="control-label col-xs-4">Equipment Category</label>
-                <div class="col-xs-8">
-                    <input class="form-control" formControlName="equipCat">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <label [myLabel] class="control-label col-xs-4">Equipment Type</label>
-                <div class="col-xs-8">
-                    <input class="form-control" formControlName="equipType">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <label [myLabel] class="control-label col-xs-4">From</label>
-                <div class="col-xs-8">
-                    <material-datepicker [(date)]="fromDate"></material-datepicker>
-                    <!--<input class="form-control" formControlName="fromDate">-->
-                </div>
-            </div>
-            <div class="col-md-6">
-                <label [myLabel] class="control-label col-xs-4">To</label>
-                <div class="col-xs-8">
-                    <material-datepicker [(date)]="toDate"></material-datepicker>
-                    <!--<input class="form-control" formControlName="toDate">-->
-                </div>
-            </div>
+        </div>
+        <div class="form-actions">
+            <button type="submit">Search</button>
+            <button class='btn bg-primary' (click)="clear()" type="button">Clear</button>
+            <button class='btn bg-primary' (click)="export()" type="button">Export</button>
         </div>
     </form>
 </div>
 
-<p *ngIf="!trackingForm.valid">Counter is invalid!</p>
+
 <pre>{{ trackingForm.value | json }}</pre>
-
-<button class='btn bg-primary' (click)="search()" type="button">Search</button>
-<button class='btn bg-primary' (click)="clear()" type="button">Clear</button>
-<button class='btn bg-primary' (click)="export()" type="button">Export</button>
-
-    <!--
-
-
-
-
-
-
-
-
-
-
-
-
->-->
-
-
-
-
-
-<!--<div class="form-group">
-
-
-
-    <div [highlight]="color" class="col-xs-12 col-md-6 col-lg-4">
-        Location
-    </div>
-    <div [highlight]="'yellow'" class="col-xs-12 col-md-6 col-lg-4">
-        Sub Location
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-4">
-        Tag ID
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-4">
-        Equipment No
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-4">
-        Equipment Category
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-4">
-        Equipment Type
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-4">
-        From
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-4">
-        To
-    </div>
-</div>-->
 
