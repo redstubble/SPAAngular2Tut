@@ -7,13 +7,19 @@
                 <div class="col-md-6">
                     <label [myLabel] [myHighlight]="color" class="control-label col-xs-4">Reader Organization</label>
                     <div class="col-xs-8">
-                        <dropDownList formControlName="readerOrg" selectType="All" url="/api/Tracking/GetReaderOrgs"></dropDownList>
+                        <dropDownList formControlName="locationOUID" selectType="All" url="/api/Tracking/GetReaderOrgs"></dropDownList>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <label [myLabel] class="control-label col-xs-4">Location</label>
                     <div class="col-xs-8">
                         <input class="form-control" formControlName="location">
+                        <div *ngIf="formErrors.location && submitted" class="alert alert-danger">
+                            {{ formErrors.location }}
+                        </div>
+                        <div *ngIf="!trackingForm.controls.location.valid && trackingForm.controls.location.pristine && submitted" class="">
+                            Required
+                        </div>
                     </div>
                 </div>
             </div>
@@ -22,12 +28,18 @@
                     <label [myLabel] class="control-label col-xs-4">Sub Location</label>
                     <div class="col-xs-8">
                         <dropDownList formControlName="subLocation" selectType="All" url="/api/Tracking/GetSubLocations"></dropDownList>
+                        <div *ngIf="formErrors.subLocation && submitted" class="alert alert-danger">
+                            {{ formErrors.subLocation }}
+                        </div>
+                        <div *ngIf="!trackingForm.controls.subLocation.valid && trackingForm.controls.subLocation.pristine && submitted" class="">
+                            Required
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <label [myLabel] class="control-label col-xs-4">Tag ID</label>
                     <div class="col-xs-8">
-                        <input class="form-control" formControlName="tagID">
+                        <input type="number" class="form-control" formControlName="tagID">
                     </div>
                 </div>
             </div>
@@ -35,13 +47,13 @@
                 <div class="col-md-6">
                     <label [myLabel] class="control-label col-xs-4">Equipment No</label>
                     <div class="col-xs-8">
-                        <input class="form-control" formControlName="equipNo">
+                        <input class="form-control" formControlName="equipmentNo">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <label [myLabel] class="control-label col-xs-4">Equipment Category</label>
                     <div class="col-xs-8">
-                        <input class="form-control" formControlName="equipCat">
+                        <input class="form-control" formControlName="equipmentCategory">
                     </div>
                 </div>
             </div>
@@ -49,7 +61,7 @@
                 <div class="col-md-6">
                     <label [myLabel] class="control-label col-xs-4">Equipment Type</label>
                     <div class="col-xs-8">
-                        <input class="form-control" formControlName="equipType">
+                        <input class="form-control" formControlName="equipmentType">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -67,7 +79,7 @@
             </div>
         </div>
         <div class="form-actions">
-            <button type="submit">Search</button>
+            <button type="submit" class="btn btn-default">Search</button>
             <button class='btn bg-primary' (click)="clear()" type="button">Clear</button>
             <button class='btn bg-primary' (click)="export()" type="button">Export</button>
         </div>

@@ -1,7 +1,9 @@
 ﻿<select (change)="onChange($event.target.value)">
-    <option *ngFor="let item of items" 
-            [attr.value]="useIndex ? item.value : null"
+    <option *ngFor="let item of selectList?.items" 
+            [attr.value]="item.value"
             [ngValue]="x"
+            [attr.selected]="item.selected ? 'true' : null"
+            [selected]="item.selected ? 'true' : null"
             >{{item.text}}
     </option>
 </select>

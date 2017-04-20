@@ -1,14 +1,25 @@
 ﻿//https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html
 
+enum DropDownListType {
+    String = 0,
+    Int = 1
+}
+
+interface DropDownListItem {
+    text: string;
+    value: any;
+    selected: boolean;
+}
+
+interface DropDownList {
+    items: DropDownListItem[],
+    type: DropDownListType
+}
+
 import { Component, OnChanges, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { CoreDataService } from '../core.service'
 import { Http } from '@angular/http';
-
-interface DropDownList {
-    text: string;
-    value: any;
-}
 
 @Component({
     selector: 'dropDownList',
@@ -27,40 +38,41 @@ export class DropDownListComponent implements ControlValueAccessor, OnInit  {
     @Input() selectType;
     @Input() url;
     
-
-    public listOptions: { [id: string]: DropDownList } = {
+    public listOptions: { [id: string]: DropDownListItem } = {
         'All': {
             text : 'All',
-            value : 0
+            value: 0,
+            selected: true,
         },
         'Select': {
             text: 'Please Select',
-            value: -1
+            value: -1,
+            selected:true
         },
     };
 
-    public useIndex: Boolean = false;
+    public selectList: DropDownList;
 
-    public items: DropDownList[];
-
-    public item: DropDownList;
+    public item: DropDownListItem;
 
     public selectedItem: string;
 
     pushDefaultItem = function () {
-        let item = this.listOptions[this.selectType];
-        this.useIndex = (typeof this.items[0].value === "number") ? true : false;
-        this.selectedItem = item;
-        this.items.unshift(item)
+        if (this.selectType != null) {
+            let item: DropDownListItem = this.listOptions[this.selectType];
+            this.selectList.items.unshift(item);
+            this.writeValue(item.value);
+        };
     }
 
-    constructor(private http: Http) {
-        
-    };
+    constructor(private http: Http) {};
 
     ngOnInit() {
+
         this.http.get(this.url).subscribe(
-            result => { this.items = result.json() as DropDownList[]; },
+            result => {
+                this.selectList = result.json() as DropDownList;
+            },
             error => {
                 //coreService.handleError // causing cookie errors
             },

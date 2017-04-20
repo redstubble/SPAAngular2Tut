@@ -15,20 +15,21 @@ import 'rxjs/add/operator/map'
 })
 export class CoreTrackingCriteriaComponent implements OnInit {
 
+    public submitted: Boolean;
     public trackingForm: FormGroup;
     public postURL: string = '/api/Tracking/searchTracking';
 
     onSubmit(data, event) {
         event.preventDefault();
-        console.log(this.trackingForm.value, this.trackingForm.valid)
+        this.submitted = true;
+        if (!this.trackingForm.valid)
+            return;
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-
         let jsonData = JSON.stringify(data.value);
-        debugger;
+
         return this.http.post(this.postURL, jsonData, options)
-            .map((res: Response) => {
-            })
+            .map((res: Response) => { })
             .catch(this.handleError).subscribe(r => { })
     }
 
@@ -56,6 +57,7 @@ export class CoreTrackingCriteriaComponent implements OnInit {
     constructor(private http: Http, private fb: FormBuilder, private coreService: CoreDataService) {};
 
     ngOnInit() {
+        this.submitted = false;
         this.createForm();
     }
 
@@ -67,19 +69,60 @@ export class CoreTrackingCriteriaComponent implements OnInit {
         this.trackingForm.controls['fromDate'].setValue(date);
     };
 
-    public createForm() {
+    createForm() {
         this.trackingForm = this.fb.group({
-            readerOrg: [],
+            locationOUID: [],
             location: ['', [Validators.required, Validators.maxLength(3)]],
-            subLocation: ['', Validators.required],
-            tagID: ['', Validators.required],
-            equipNo: ['', Validators.required],
-            equipCat: ['', Validators.required],
-            equipType: ['', Validators.required],
-            fromDate: ['', Validators.required],
-            toDate: ['', Validators.required],
+            subLocation: [''],
+            tagID: [''],
+            equipmentNo: [''],
+            equipmentCategory: [''],
+            equipmentType: [''],
+            fromDate: [''],
+            toDate: [''],
         });
+
+        this.trackingForm.valueChanges
+            .subscribe(data => this.onValueChanged(data));
+
+        this.onValueChanged();
+
     };
+
+    //Validation
+
+    formErrors = {
+        'location': '',
+        'subLocation': ''
+    };
+
+    onValueChanged(data?: any) {
+        if (!this.trackingForm) { return; }
+        const form = this.trackingForm;
+        for (const field in this.formErrors) {
+            // clear previous error message (if any)
+            this.formErrors[field] = '';
+            const control = form.get(field);
+            if (control && control.dirty && !control.valid) {
+                const messages = this.validationMessages[field];
+                for (const key in control.errors) {
+                    this.formErrors[field] += messages[key] + ' ';
+                }
+            }
+        }
+    }
+
+    validationMessages = {
+        'location': {
+            'required': 'Name is required.',
+            'maxlength': 'Name cannot be more than 3 characters long.',
+        },
+        'subLocation': {
+            'required': 'SubLocation is required.'
+        }
+    };
+
+
 
     public search() {
         debugger;

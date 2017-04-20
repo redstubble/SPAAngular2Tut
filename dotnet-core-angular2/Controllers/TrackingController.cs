@@ -14,6 +14,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace WebApplicationBasic.Controllers
 {
     // TO DO Query database to get full result set
+    public class AngularSelectListItem
+    {
+        public enum SelectListType
+        {
+            Int = 0,
+            String = 1
+
+        }
+        public IEnumerable<SelectListItem> Items { get; set; }
+        public SelectListType Type { get; set; }
+
+    }
+
+
 
     [Route("api/[controller]")]
     public class TrackingController : Controller
@@ -38,7 +52,7 @@ namespace WebApplicationBasic.Controllers
 
 
         [HttpPost("[action]")]
-        public IEnumerable<dynamic> SearchTracking([FromBody] TrackingSearchCriteria c)
+        public ActionResult SearchTracking([FromBody] TrackingSearchCriteria c)
         {
             var list = new List<dynamic>();
             //using (var cnn = CreateOpenConnection(Database.Site))
@@ -58,35 +72,30 @@ namespace WebApplicationBasic.Controllers
             //        }, commandType: System.Data.CommandType.StoredProcedure).ToList();
 
             //};
-            return list;
+            return Ok();
 
         }
 
         [HttpGet("[action]")]
-        public IEnumerable<SelectListItem> GetReaderOrgs()
+        public AngularSelectListItem GetReaderOrgs()
         {
-            return List();
-            //return l.Select(i => new DropDownList
-            //{
-            //    Value = i.OUID,
-            //    Text = i.DisplayName
-            //});
+            return new AngularSelectListItem() {
+                Items = OUList(),
+                Type = AngularSelectListItem.SelectListType.Int
+            };
         }
 
         [HttpGet("[action]")]
-        public IEnumerable<SelectListItem> GetSubLocations()
+        public AngularSelectListItem GetSubLocations()
         {
-            return SubLocationList();
-            //var orgs = new string[] { "Alpha Delivery", "Avion", "Bag Room", "Cargo", "Checkpoint" };
-
-            //return Enumerable.Range(1, 4).Select(index => new DropDownList
-            //{
-            //    Value = index,
-            //    Text = orgs[index]
-            //});
+            return new AngularSelectListItem()
+            {
+                Items = SubLocationList(),
+                Type = AngularSelectListItem.SelectListType.String
+            };
         }
 
-        public List<SelectListItem> List()
+        public List<SelectListItem> OUList()
         {
             var list = new List<OU>();
             using (var cnn = CreateOpenConnection(Database.Site))
@@ -95,8 +104,9 @@ namespace WebApplicationBasic.Controllers
                 return list.Select(s => new SelectListItem
                 {
                     Text = s.DisplayName,
-                    Value = s.OUID.ToString()
-                }).ToList(); ;
+                    Value = s.OUID.ToString(),
+
+                }).ToList();
             };
         }
 
@@ -108,20 +118,9 @@ namespace WebApplicationBasic.Controllers
             {
                 list = cnn.Query("usp_SubLocation_List", commandType: CommandType.StoredProcedure).ToList().Select(s => new SelectListItem { Text = s.SubLocationProper, Value = s.SubLocation }).ToList();
             }
-            //if (defaultText != null)
-            //    list.Insert(0, new SelectListItem { Text = defaultText, Value = "" });
             return list;
         }
 
     }
-
-    public class DropDownList
-    {
-        public string Text { get; set; }
-        public int Value { get; set; }
-    }
-
-
-
 
 }
