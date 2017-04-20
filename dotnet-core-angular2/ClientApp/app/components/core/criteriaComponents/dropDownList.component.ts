@@ -61,7 +61,7 @@ export class DropDownListComponent implements ControlValueAccessor, OnInit  {
         if (this.selectType != null) {
             let item: DropDownListItem = this.listOptions[this.selectType];
             this.selectList.items.unshift(item);
-            this.writeValue(item.value);
+            this.onChange(item.value);
         };
     }
 
