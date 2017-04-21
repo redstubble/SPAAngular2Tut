@@ -55,24 +55,25 @@ namespace WebApplicationBasic.Controllers
         public ActionResult SearchTracking([FromBody] TrackingSearchCriteria c)
         {
             var list = new List<dynamic>();
-            //using (var cnn = CreateOpenConnection(Database.Site))
-            //{
-            //    list = cnn.Query("usp_EquipmentEvent_SearchTracking", new {
-            //            OUID = 0,
-            //            c.LocationOUID,
-            //            c.Location,
-            //            c.SubLocation,
-            //            c.TagID,
-            //            c.EquipmentCategory,
-            //            c.EquipmentType,
-            //            c.EquipmentNo,
-            //            TimestampLFrom = c.FromDate,
-            //            TimestampLTo = c.ToDate,
-            //            TimeZone = 'Z'
-            //        }, commandType: System.Data.CommandType.StoredProcedure).ToList();
-
-            //};
-            return Ok();
+            using (var cnn = CreateOpenConnection(Database.Site))
+            {
+                list = cnn.Query("usp_EquipmentEvent_SearchTracking", new
+                {
+                    OUID = 0,
+                    c.LocationOUID,
+                    Location = (c.Location.Length == 0) ? null : c.Location,
+                    c.SubLocation,
+                    c.TagID,
+                    c.EquipmentCategory,
+                    c.EquipmentType,
+                    c.EquipmentNo,
+                    TimestampLFrom = c.FromDate,
+                    TimestampLTo = c.ToDate,
+                    TimeZone = 'Z'
+                }, commandType: System.Data.CommandType.StoredProcedure).ToList();
+            };
+            var t = Ok(list);
+            return t;
 
         }
 

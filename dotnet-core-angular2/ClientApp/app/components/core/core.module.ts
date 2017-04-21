@@ -6,10 +6,11 @@ import { DatepickerModule } from 'angular2-material-datepicker'
 import { ContactRoutingModule } from './core-routing.module';
 import { CoreTrackingMainComponent } from './coreTrackingMain.component';
 import { CoreTrackingCriteriaComponent } from './coreTrackingCriteria.component';
-import { CriteriaLabelDirective } from './coreCriteriaLabel.directive';
-import { HighlightDirective } from './coreCriteriaHighlight.directive';
+import { CriteriaLabelDirective } from './directives/coreCriteriaLabel.directive';
+import { HighlightDirective } from './directives/coreCriteriaHighlight.directive';
+import { CriteriaNullifyEmptyStringDirective } from './directives/nullEmptyString.directive'
 import { DropDownListComponent } from './criteriaComponents/dropDownList.component'
-
+import { InputComponent } from './criteriaComponents/input.component'
 
 import { CoreDataService } from './core.service';
 
@@ -27,7 +28,9 @@ import { CoreDataService } from './core.service';
         CoreTrackingCriteriaComponent,
         CriteriaLabelDirective,
         HighlightDirective,
-        DropDownListComponent
+        CriteriaNullifyEmptyStringDirective,
+        DropDownListComponent,
+        InputComponent
     ],
     exports: [
         CoreTrackingMainComponent,

@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, EventEmitter, Input} from '@angular/core';
+﻿import { Component, OnInit, EventEmitter, Input, OnChanges} from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DropDownListComponent } from './criteriaComponents/dropDownList.component'
 import { CoreDataService } from './core.service'
@@ -13,7 +13,7 @@ import 'rxjs/add/operator/map'
     templateUrl: './coreTrackingCriteria.component.html',
     styleUrls: ['./coreTrackingCriteria.component.css']
 })
-export class CoreTrackingCriteriaComponent implements OnInit {
+export class CoreTrackingCriteriaComponent implements OnInit, OnChanges {
 
     public submitted: Boolean;
     public trackingForm: FormGroup;
@@ -29,9 +29,14 @@ export class CoreTrackingCriteriaComponent implements OnInit {
         let jsonData = JSON.stringify(data.value);
 
         return this.http.post(this.postURL, jsonData, options)
-            .map((res: Response) => { })
-            .catch(this.handleError).subscribe(r => { })
+            .subscribe(
+            data => { debugger; }
+            )
+            //.map((res: Response) => {d => })
+            //.catch(this.handleError).subscribe(r => { })
     }
+
+    ngOnChanges() { debugger; };
 
     private handleError(error: Response | any) {
         // In a real world app, you might use a remote logging infrastructure
@@ -52,8 +57,6 @@ export class CoreTrackingCriteriaComponent implements OnInit {
         return body.data || {};
     }
 
-
-
     constructor(private http: Http, private fb: FormBuilder, private coreService: CoreDataService) {};
 
     ngOnInit() {
@@ -71,15 +74,15 @@ export class CoreTrackingCriteriaComponent implements OnInit {
 
     createForm() {
         this.trackingForm = this.fb.group({
-            locationOUID: [],
-            location: ['', [Validators.required, Validators.maxLength(3)]],
-            subLocation: [''],
-            tagID: [''],
-            equipmentNo: [''],
-            equipmentCategory: [''],
-            equipmentType: [''],
-            fromDate: [''],
-            toDate: [''],
+            locationOUID: [null, [Validators.required]],
+            location: [null, [Validators.required, Validators.maxLength(3)]],
+            subLocation: [null],
+            tagID: [null],
+            equipmentNo: [null],
+            equipmentCategory: [null],
+            equipmentType: [null],
+            fromDate: [null],
+            toDate: [null],
         });
 
         this.trackingForm.valueChanges
@@ -92,7 +95,7 @@ export class CoreTrackingCriteriaComponent implements OnInit {
     //Validation
 
     formErrors = {
-        'location': '',
+        //'location': '',
         'subLocation': ''
     };
 
@@ -113,16 +116,14 @@ export class CoreTrackingCriteriaComponent implements OnInit {
     }
 
     validationMessages = {
-        'location': {
-            'required': 'Name is required.',
-            'maxlength': 'Name cannot be more than 3 characters long.',
-        },
+        //'location': {
+        //    'required': 'Name is required.',
+        //    'maxlength': 'Name cannot be more than 3 characters long.',
+        //},
         'subLocation': {
             'required': 'SubLocation is required.'
         }
     };
-
-
 
     public search() {
         debugger;

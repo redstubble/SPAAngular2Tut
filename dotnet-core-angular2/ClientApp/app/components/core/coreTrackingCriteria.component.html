@@ -13,13 +13,14 @@
                 <div class="col-md-6">
                     <label [myLabel] class="control-label col-xs-4">Location</label>
                     <div class="col-xs-8">
-                        <input class="form-control" formControlName="location">
+                        <inputComponent formControlName="location" inputValue="gfds" maxLength="3"></inputComponent>
+                        <!--<input [nullifyEmptyString] class="form-control" formControlName="location"  maxlength="3" #input (input)="input.value=$event.target.value.toUpperCase()" >
                         <div *ngIf="formErrors.location && submitted" class="alert alert-danger">
                             {{ formErrors.location }}
                         </div>
                         <div *ngIf="!trackingForm.controls.location.valid && trackingForm.controls.location.pristine && submitted" class="">
                             Required
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>

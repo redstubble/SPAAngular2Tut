@@ -1,0 +1,7 @@
+﻿<input class="form-control" #myInput [attr.maxlength]="maxLength ? maxLength : null" (myInput)="input.value=$event.target.value.toUpperCase()">
+<!--<div *ngIf="formErrors.location && submitted" class="alert alert-danger">
+    {{ formErrors.location }}
+</div>-->
+<!--<div *ngIf="!trackingForm.controls.location.valid && trackingForm.controls.location.pristine && submitted" class="">
+    Required
+</div>-->
